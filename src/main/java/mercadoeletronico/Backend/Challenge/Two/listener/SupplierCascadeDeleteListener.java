@@ -1,4 +1,4 @@
-package mercadoeletronico.Backend.Challenge.Two.config;
+package mercadoeletronico.Backend.Challenge.Two.listener;
 
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.Supplier;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.SupplierMainContact;
