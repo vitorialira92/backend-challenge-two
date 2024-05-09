@@ -1,15 +1,23 @@
 package mercadoeletronico.Backend.Challenge.Two.dtos;
 
+import jakarta.validation.constraints.NotNull;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.SupplierType;
 
 import java.util.List;
 
 public class SupplierCreationDTO {
-    private String name;
-    private SupplierType type;
-    private String document;
-    private String contactName;
-    private String contactEmail;
-    private List<String> phoneNumbers;
-    private String activitiesDescription;
+    @NotNull
+    public String name;
+    @NotNull
+    public SupplierType type;
+    @NotNull
+    public String document;
+    @NotNull
+    public String contactName;
+    @NotNull
+    public String contactEmail;
+    @NotNull
+    public List<String> phoneNumbers;
+    @NotNull
+    public String activitiesDescription;
 }
