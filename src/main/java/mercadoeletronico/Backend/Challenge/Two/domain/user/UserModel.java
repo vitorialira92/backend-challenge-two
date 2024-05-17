@@ -1,6 +1,7 @@
 package mercadoeletronico.Backend.Challenge.Two.domain.user;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +11,7 @@ import java.util.List;
 public class UserModel implements UserDetails {
     @Id
     private String id;
+    @Indexed(unique = true)
     private String email;
     private String password;
 
