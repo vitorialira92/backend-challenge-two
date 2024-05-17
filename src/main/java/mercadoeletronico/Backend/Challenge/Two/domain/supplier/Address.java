@@ -14,4 +14,15 @@ public class Address {
     private String neighborhood;
     private String city;
     private State state;
+
+    public Address(String zipcode, String street, String number,
+                   String complement, String neighborhood, String city, State state) {
+        this.zipcode = zipcode;
+        this.street = street;
+        this.number = number;
+        this.complement = complement;
+        this.neighborhood = neighborhood;
+        this.city = city;
+        this.state = state;
+    }
 }
