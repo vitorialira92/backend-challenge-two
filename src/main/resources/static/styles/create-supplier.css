@@ -1,0 +1,101 @@
+.page{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #EFF7FA;
+}
+.custom-input{
+    height: auto;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 32px;
+    background: #EFF7FA;
+}
+.custom-input:hover{
+    border: 1px solid #008DCF;
+}
+.custom-input:focus{
+    outline: none;
+    border: 1px solid #008DCF;
+    background: #EFF7FA;
+}
+
+.custom-input option {
+    color: #4C4C4C;
+}
+
+.custom-container{
+    padding: 20px 20px;
+    border-radius: 32px;
+    background: #FFF;
+}
+
+.custom-tag{
+    border: none;
+    border-radius: 2rem;
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    padding: 10px;
+    align-self: self-start;align-items: center;
+}
+.tag-row{
+    gap: 12px;
+}
+.primary-button{
+    color: #FFFFFF;
+    display: flex;
+    padding: 12px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #0094CB;
+}
+
+.primary-button:hover{
+    background-color: #56CDFA;
+    border: none;
+}
+
+.secondary-button{
+    color: #0094CB;
+    display: flex;
+    padding: 12px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid #0094CB;
+}
+
+.secondary-button:hover{
+    border: none;
+    color: #0094CB;
+    background-color: #CDF1FF;
+}
+
+.small-secondary-button{
+    color: #0094CB;
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid #0094CB;
+}
+.small-secondary-button:hover{
+    border: none;
+    color: #0094CB;
+    background-color: #CDF1FF;
+}
+
+.phone-number{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+    gap: 12px;
+}
