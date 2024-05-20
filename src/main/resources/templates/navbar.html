@@ -6,14 +6,14 @@
     <body>
         <div th:fragment="navbar">
             <nav class="custom-navbar">
-                <img href="#" th:href="@{/home-page}" th:src="@{/images/logo-me-original.png}" alt="Mercado Eletrônico" style="max-height: 2.5rem;">
+                <img href="#" onclick="loadPage('/home-page')"  th:src="@{/images/logo-me-original.png}" alt="Mercado Eletrônico" style="max-height: 2.5rem;">
                 <div class="nav-buttons">
                     <ul>
                         <li>
-                            <a href="#" th:href="@{/all-suppliers}" class="custom-link">TODOS OS FORNECEDORES</a>
+                            <a href="#" onclick="loadPage('/all-suppliers')"  class="custom-link">TODOS OS FORNECEDORES</a>
                         </li>
                         <li>
-                            <a href="#" th:href="@{/create-supplier}" class="custom-link">CRIAR FORNECEDOR</a>
+                            <a href="#" onclick="loadPage('/create-supplier')" class="custom-link">CRIAR FORNECEDOR</a>
                         </li>
                     </ul>
                 </div>
