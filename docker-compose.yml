@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 services:
   mongo:
     image: mongo:latest
@@ -6,11 +6,17 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: vlt123456**/*
+      MONGO_INITDB_ROOT_PASSWORD: vlt123456
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-
+  springboot-app:
+    build: .
+    container_name: challengetwoapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
 volumes:
   mongodb_data:
