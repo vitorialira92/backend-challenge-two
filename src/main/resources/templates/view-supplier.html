@@ -15,6 +15,7 @@
 </head>
 <body class="page">
     <div th:insert="~{navbar :: navbar}"></div>
+    <p id="supplierIdContainer" style="visibility: hidden;" th:text="${supplierId}"></p>
     <div class="container mt-5">
         <div class="row tag-row custom-tag">
             <img th:src="@{/images/eye.png}" alt="Visualizar">
@@ -99,6 +100,5 @@
         </div>
     </form>
     <script th:src="@{/js/view-supplier.js}"></script>
-
 </body>
 </html>
