@@ -25,4 +25,32 @@ public class Address {
         this.city = city;
         this.state = state;
     }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public State getState() {
+        return state;
+    }
 }
