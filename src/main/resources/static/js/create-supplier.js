@@ -1,10 +1,7 @@
 $(document).ready(function() {
     $('#creationForm').submit(function(event) {
         event.preventDefault();
-        console.log('Name:', $('#name').val());
-        console.log('Type:', $('#type').val());
-        console.log('Document:', $('#documentNumber').val());
-        console.log('State:', $('#state').val());
+
         var phoneNumbers = [];
         $('.phone-input').each(function() {
             phoneNumbers.push($(this).val());
