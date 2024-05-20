@@ -8,6 +8,10 @@
     width: 100%;
 }
 
+.custom-navbar img{
+    cursor: pointer;
+}
+
 .custom-navbar, .custom-navbar .custom-link {
     color: #5C5C5C;
     background-color: #FFFFFF;
