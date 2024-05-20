@@ -1,0 +1,49 @@
+.page {
+    font-family: 'Josefin Sans', sans-serif;
+    background: #EFF7FA;
+}
+#suppliersListFrag {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: auto;
+    max-width: 180px;
+    color: #434343;
+    font-size: 24px;
+}
+
+.custom-card{
+    border-radius: 32px;
+    border: none;
+    background: #FFFFFF;
+    display: flex;
+    padding: 24px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    max-width: 600px;
+}
+
+.custom-items{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+
+.item{
+    height: 2rem;
+    width: 2rem;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    cursor: pointer;
+}
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Supplier List</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script th:src="@{/js/utils/auth-check.js}"></script>
+        <script th:src="@{/js/utils/loadPage.js}"></script>
+        <script th:src="@{/js/all-suppliers.js}"></script>
+
+        <link rel="stylesheet" th:href="@{/styles/all-suppliers.css}" type="text/css">
+        <link rel="stylesheet" th:href="@{/styles/navbar.css}" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+    <body class="page">
+        <div th:insert="~{navbar :: navbar}"></div>
+        <div class="container mt-5">
+            <h2>TODOS OS FORNECEDORES</h2>
+            <div id="suppliersListFrag" class="row">
+                <!-- suppliers -->
+            </div>
+        </div>
+    </body>
+</html>
