@@ -94,6 +94,11 @@ public class SupplierService {
 
             supplier.setPhoneNumbers(supplierDTO.phoneNumbers);
 
+            Address address = supplier.getAddress();
+            address.update(supplierDTO.zipCode, supplierDTO.street, supplierDTO.number, supplierDTO.complement,
+                    supplierDTO.neighborhood, supplierDTO.city, State.valueOf(String.valueOf(supplierDTO.state)));
+            supplier.setAddress(address);
+
             repository.save(supplier);
 
             return Optional.of(supplier);
