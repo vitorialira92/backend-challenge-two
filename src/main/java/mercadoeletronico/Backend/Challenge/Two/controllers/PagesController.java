@@ -1,6 +1,6 @@
 package mercadoeletronico.Backend.Challenge.Two.controllers;
 
-import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierCreationDTO;
+import mercadoeletronico.Backend.Challenge.Two.dtos.RegisterUserDTO;
 import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierDTO;
 import mercadoeletronico.Backend.Challenge.Two.exceptions.ResourceNotFoundException;
 import mercadoeletronico.Backend.Challenge.Two.services.SupplierService;
@@ -23,11 +23,21 @@ public class PagesController {
     }
 
     @GetMapping("/create-supplier")
-    public String createSupplier(Model model) {
-        SupplierCreationDTO creationDTO = new SupplierCreationDTO();
-        model.addAttribute("creationDTO", creationDTO);
+    public String createSupplier() {
         return "create-supplier";
     }
+
+    @GetMapping("/edit-supplier/{id}")
+    public String editSupplier(@PathVariable String id, Model model) throws ResourceNotFoundException {
+        Optional<SupplierDTO> supplier = supplierService.getById(id);
+        if(supplier.isEmpty()) {
+            return "home-page";
+        }
+        model.addAttribute("supplierId", id);
+        return "edit-supplier";
+
+    }
+
     @GetMapping("/view-supplier/{id}")
     public String viewSupplier(@PathVariable String id, Model model) throws ResourceNotFoundException {
         Optional<SupplierDTO> supplier = supplierService.getById(id);
