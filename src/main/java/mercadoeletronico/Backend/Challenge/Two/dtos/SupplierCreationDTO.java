@@ -8,7 +8,6 @@ import java.util.List;
 
 public class SupplierCreationDTO {
 
-    public String userId;
     @NotNull
     public String name;
     @NotNull
@@ -36,14 +35,6 @@ public class SupplierCreationDTO {
     public String city;
     @NotNull
     public State state;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId( String userId) {
-        this.userId = userId;
-    }
 
     public @NotNull String getName() {
         return name;
