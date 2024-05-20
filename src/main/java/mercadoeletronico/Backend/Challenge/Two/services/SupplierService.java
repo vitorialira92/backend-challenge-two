@@ -1,8 +1,9 @@
 package mercadoeletronico.Backend.Challenge.Two.services;
 
-import mercadoeletronico.Backend.Challenge.Two.domain.supplier.Supplier;
-import mercadoeletronico.Backend.Challenge.Two.domain.supplier.SupplierMainContact;
+import mercadoeletronico.Backend.Challenge.Two.domain.supplier.*;
 import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierCreationDTO;
+import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierDTO;
+import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierSimpleDTO;
 import mercadoeletronico.Backend.Challenge.Two.dtos.SupplierUpdateDTO;
 import mercadoeletronico.Backend.Challenge.Two.exceptions.DuplicateCreationAttemptException;
 import mercadoeletronico.Backend.Challenge.Two.exceptions.ResourceNotFoundException;
@@ -10,6 +11,7 @@ import mercadoeletronico.Backend.Challenge.Two.repositories.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,32 +21,50 @@ public class SupplierService {
     @Autowired
     private SupplierRepository repository;
 
-    public List<Supplier> getAll() {
-        return repository.findAll();
+    public List<SupplierSimpleDTO> getAll(String userId) {
+        List<SupplierSimpleDTO> suppliers = new ArrayList<>();
+
+        for(Supplier supplier : repository.findAllByUserId(userId)) {
+            String document = (supplier.getDocumentType() == DocumentType.CPF ? "CPF " : "CNPJ ")
+                    + supplier.getDocument();
+            suppliers.add(new SupplierSimpleDTO(supplier.getId(),
+                    supplier.getName(), document));
+        }
+        return suppliers;
     }
 
-    public Optional<Supplier> getById(String id) throws ResourceNotFoundException {
+    public Optional<SupplierDTO> getById(String id) throws ResourceNotFoundException {
 
-        Optional<Supplier> supplier = repository.findById(id);
-        if(supplier.isPresent())
-            return supplier;
+        Optional<Supplier> optionalSupplier = repository.findById(id);
+        if(optionalSupplier.isPresent()){
+            var supplier = optionalSupplier.get();
+
+            return Optional.of(new SupplierDTO(supplier.getName(), supplier.getType(), supplier.getDocument(), supplier.getMainContact().getName(),
+                    supplier.getMainContact().getEmail(), supplier.getPhoneNumbers(), supplier.getActivitiesDescription(),
+                    supplier.getAddress().getZipcode(), supplier.getAddress().getStreet(), supplier.getAddress().getNumber(),
+                    supplier.getAddress().getComplement(), supplier.getAddress().getNeighborhood(),
+                    supplier.getAddress().getCity(), supplier.getAddress().getState()));
+        }
 
 
         throw new ResourceNotFoundException("Supplier");
     }
 
-    public Supplier createSupplier(SupplierCreationDTO supplierDTO) throws DuplicateCreationAttemptException{
+    public Supplier createSupplier(SupplierCreationDTO supplierDTO, String userId) throws DuplicateCreationAttemptException{
 
         Optional<Supplier> opt = repository.findByDocument(supplierDTO.document);
         if(opt.isPresent())
                 throw new DuplicateCreationAttemptException(opt.get().getDocument(),
                         opt.get().getDocumentType().name(), "supplier");
-
+        Address address = new Address(supplierDTO.zipCode, supplierDTO.street, supplierDTO.number, supplierDTO.complement,
+                supplierDTO.neighborhood, supplierDTO.city, State.valueOf(String.valueOf(supplierDTO.state)));
         Supplier supplier = new Supplier(
+                userId,
                 supplierDTO.name,
                 supplierDTO.type,
                 supplierDTO.document,
                 new SupplierMainContact(supplierDTO.contactName, supplierDTO.contactEmail),
+                address,
                 supplierDTO.phoneNumbers,
                 supplierDTO.activitiesDescription
         );
