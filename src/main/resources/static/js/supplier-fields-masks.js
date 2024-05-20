@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $('#type').change(function() {
         var fieldMask;
         var placeholder;
