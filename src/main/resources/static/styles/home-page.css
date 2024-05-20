@@ -1,0 +1,78 @@
+.page{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.logo-container{
+    width: 50vw;
+    color: white;
+    background-image: linear-gradient(to bottom, #0A8CCC, #2ACEBC);
+    border-top-right-radius: 64px;
+    border-bottom-right-radius: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.item{
+    margin-bottom: 20px;
+    padding: 5px;
+}
+p {
+    font-size: 24px;
+}
+
+h2 {
+    color: #0A8CCC;
+}
+.input-customized{
+    background-color: #E0F4FD;
+    border-radius: 32px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.auth-card {
+    width: 350px;
+    padding: 25px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+}
+
+.auth-card .form-control {
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+.primary-button{
+    color: #FFFFFF;
+    display: flex;
+    padding: 12px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #0094CB;
+}
+
+.primary-button:hover{
+    background-color: #56CDFA;
+}
+
+.secondary-button{
+    color: #0094CB;
+    display: flex;
+    padding: 12px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid #0094CB;
+}
+
+.secondary-button:hover{
+    border: none;
+    color: #0094CB;
+    background-color: #CDF1FF;
+}
