@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
 </head>
 <body class="page">
     <div th:insert="~{navbar :: navbar}"></div>
@@ -20,15 +19,15 @@
         </div>
     </div>
     <div class="container mt-5 custom-container">
-        <form id="creationForm" th:action="@{/supplier}" th:object="${creationDTO}" method="post">
+        <form id="creationForm" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">Razão Social</label>
-                    <input type="text" class="form-control custom-input" id="name" th:field="*{name}" required>
+                    <input type="text" class="form-control custom-input" id="name" required>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="type">Tipo de fornecedor</label>
-                    <select class="form-control custom-input" id="type" th:field="*{type}" required>
+                    <select class="form-control custom-input" id="type" required>
                         <option value="" selected disabled >Selecione uma opção</option>
                         <option th:value="INDIVIDUAL">Pessoa Física</option>
                         <option th:value="LEGAL_ENTITY">Pessoa Jurídica</option>
@@ -38,56 +37,56 @@
             <div class="form-row">
                 <div class="form-group col-md-11">
                     <label for="activitiesDescription">Descrição de atividades</label>
-                    <input type="text" class="form-control custom-input" id="activitiesDescription" th:field="*{activitiesDescription}" required>
+                    <input type="text" class="form-control custom-input" id="activitiesDescription" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label id="document-label" for="documentNumber">CPF</label>
-                    <input type="text" class="form-control custom-input" id="documentNumber" th:field="*{document}" placeholder="000.00.000-00" disabled>
+                    <input type="text" class="form-control custom-input" id="documentNumber" placeholder="000.00.000-00" disabled>
                 </div>
                 <div class="form-group col-md-7">
                     <label for="contactName">Nome do contato</label>
-                    <input type="text" class="form-control custom-input" id="contactName" th:field="*{contactName}" required>
+                    <input type="text" class="form-control custom-input" id="contactName" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="contactEmail">E-mail do contato</label>
-                    <input type="email" class="form-control custom-input" id="contactEmail" th:field="*{contactEmail}" required>
+                    <input type="email" class="form-control custom-input" id="contactEmail" required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="zipCode">CEP</label>
-                    <input type="text" class="form-control custom-input" id="zipCode" th:field="*{zipCode}" placeholder="00.000-000" required>
+                    <input type="text" class="form-control custom-input" id="zipCode" placeholder="00.000-000" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="state">UF</label>
-                    <input type="text" class="form-control custom-input" id="state" th:field="*{state}" readonly>
+                    <input type="text" class="form-control custom-input" id="state" readonly>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Logradouro</label>
-                    <input type="text" class="form-control custom-input" id="street" th:field="*{street}" readonly>
+                    <input type="text" class="form-control custom-input" id="street" readonly>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="complement">Complemento</label>
-                    <input type="text" class="form-control custom-input" id="complement" th:field="*{complement}">
+                    <input type="text" class="form-control custom-input" id="complement">
                 </div>
                 <div class="form-group col-md-1">
                     <label for="number">Nº</label>
-                    <input type="text" class="form-control custom-input" id="number" th:field="*{number}" required>
+                    <input type="text" class="form-control custom-input" id="number" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="neighborhood">Bairro</label>
-                    <input type="text" class="form-control custom-input" id="neighborhood" th:field="*{neighborhood}" readonly>
+                    <input type="text" class="form-control custom-input" id="neighborhood" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="city">Cidade</label>
-                    <input type="text" class="form-control custom-input" id="city" th:field="*{city}" readonly>
+                    <input type="text" class="form-control custom-input" id="city" readonly>
                 </div>
             </div>
             <div class="form-row">
@@ -112,6 +111,7 @@
     <script th:src="@{/js/supplier-fields-masks.js}"></script>
     <script th:src="@{/js/dynamic-phone-numbers.js}"></script>
     <script th:src="@{/js/document-validation.js}"></script>
+    <script th:src="@{/js/create-supplier.js}"></script>
     <script>
         $(document).ready(function(){
             $('#zipCode').click(function (){
