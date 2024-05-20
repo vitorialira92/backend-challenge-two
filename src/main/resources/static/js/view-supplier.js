@@ -1,10 +1,12 @@
 $(document).ready(function() {
-    var pathArray = window.location.pathname.split('/');
-    var supplierId = pathArray[pathArray.length - 1];
-
+    var supplierId = $('#supplierIdContainer').text();
+    const token = localStorage.getItem('authToken');
     $.ajax({
         url: `/supplier/${supplierId}`,
         type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         success: function(supplier) {
             var supplierType;
             var documentLabel;
@@ -51,7 +53,7 @@ $(document).ready(function() {
                 confirmButtonText: 'OK'
             }).then((result)=>{
                 if (result.value) {
-                    window.location.href = '/all-suppliers';
+                    loadPage('/all-suppliers');
                 }
             });
         }
