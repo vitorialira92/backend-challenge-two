@@ -41,26 +41,24 @@ public class SupplierController {
         }
     }
     @PostMapping("/{userId}")
-    public String createSupplier(@Parameter(description = "Supplier Id", example = "4848644589")
-                                     @PathVariable String userId, @ModelAttribute("creationDTO") @Valid SupplierCreationDTO supplierDTO){
+    public ResponseEntity<String> createSupplier(@Parameter(description = "Supplier Id", example = "4848644589")
+                                     @PathVariable String userId, @RequestBody SupplierCreationDTO supplierDTO){
         try{
             Supplier supplier = service.createSupplier(supplierDTO, userId);
-            return "redirect:/view-supplier/" + supplier.getId();
+            return ResponseEntity.ok(supplier.getId());
         }catch(DuplicateCreationAttemptException ex){
-            return "error-message";
+            return ResponseEntity.badRequest().build();
         }
     }
     @PutMapping("/{id}")
-    public String updateSupplier(@Parameter(description = "Supplier Id", example = "4848644589")
+    public ResponseEntity<String> updateSupplier(@Parameter(description = "Supplier Id", example = "4848644589")
                                  @PathVariable String id,
-                                 @ModelAttribute("updateDTO") @Valid SupplierUpdateDTO updateDTO,
-                                 Model model){
+                                 @RequestBody SupplierUpdateDTO updateDTO){
         try{
             Optional<Supplier> supplier = service.updateSupplier(id, updateDTO);
-            model.addAttribute("supplier", supplier);
-            return "all-suppliers";
+            return ResponseEntity.ok(supplier.get().getId());
         }catch(ResourceNotFoundException ex){
-            return "error-message";
+            return ResponseEntity.badRequest().build();
         }
     }
     @DeleteMapping("/{id}")
