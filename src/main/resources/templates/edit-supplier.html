@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Supplier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script th:src="@{/js/utils/loadPage.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles/supplier.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/navbar.css}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:src="@{/js/utils/address-autocomplete.js}"></script>
+    <script th:src="@{/js/dynamic-phone-numbers.js}"></script>
+</head>
+<body class="page">
+    <div th:insert="~{navbar :: navbar}"></div>
+    <p id="supplierIdContainer" style="visibility: hidden;" th:text="${supplierId}"></p>
+    <div class="container mt-5">
+        <div class="row tag-row custom-tag">
+            <img th:src="@{/images/edit.png}" alt="Editar">
+            <span>Editar Fornecedor</span>
+        </div>
+    </div>
+    <div class="container mt-5 custom-container">
+        <form id="updateForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Razão Social</label>
+                    <input type="text" class="form-control custom-input" id="name" required>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="type">Tipo de fornecedor</label>
+                    <select class="form-control custom-input" id="type" disabled>
+                        <option value="" selected disabled >Selecione uma opção</option>
+                        <option th:value="INDIVIDUAL">Pessoa Física</option>
+                        <option th:value="LEGAL_ENTITY">Pessoa Jurídica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-11">
+                    <label for="activitiesDescription">Descrição de atividades</label>
+                    <input type="text" class="form-control custom-input" id="activitiesDescription" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label id="document-label" for="documentNumber">CPF</label>
+                    <input type="text" class="form-control custom-input" id="documentNumber" placeholder="000.00.000-00" disabled>
+                </div>
+                <div class="form-group col-md-7">
+                    <label for="contactName">Nome do contato</label>
+                    <input type="text" class="form-control custom-input" id="contactName" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="contactEmail">E-mail do contato</label>
+                    <input type="email" class="form-control custom-input" id="contactEmail" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="zipCode">CEP</label>
+                    <input type="text" class="form-control custom-input" id="zipCode" placeholder="00.000-000" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="state">UF</label>
+                    <input type="text" class="form-control custom-input" id="state" readonly>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="street">Logradouro</label>
+                    <input type="text" class="form-control custom-input" id="street" readonly>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="complement">Complemento</label>
+                    <input type="text" class="form-control custom-input" id="complement">
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="number">Nº</label>
+                    <input type="text" class="form-control custom-input" id="number" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="neighborhood">Bairro</label>
+                    <input type="text" class="form-control custom-input" id="neighborhood" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">Cidade</label>
+                    <input type="text" class="form-control custom-input" id="city" readonly>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="phone-list">Telefone (s)</label>
+                    <div id="phone-list">
+                        <!-- phone's inputs -->
+                    </div>
+                    <button type="button" id="add-phone" class="small-secondary-button">+</button>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary primary-button">SALVAR</button>
+            </div>
+        </form>
+    </div>
+    <script th:src="@{/js/edit-supplier.js}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#zipCode').click(function (){
+                $('#zipCode').mask('00.000-000');
+            })
+        })
+    </script>
+</body>
+</html>
