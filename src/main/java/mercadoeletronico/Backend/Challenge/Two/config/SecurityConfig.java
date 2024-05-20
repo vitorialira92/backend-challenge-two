@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/styles/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                        .requestMatchers("/auth/login", "/logout", "/auth/register").permitAll()
+                        .requestMatchers("/auth/login", "/logout", "/auth/register", "/register").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
