@@ -62,12 +62,8 @@ public class SupplierController {
         }
     }
     @DeleteMapping("/{id}")
-    public String deleteSupplier(@PathVariable String id, Model model){
-        try{
-            service.deleteSupplier(id);
-            return "all-suppliers";
-        }catch(ResourceNotFoundException ex){
-            return "error-message";
-        }
+    public String deleteSupplier(@PathVariable String id, Model model) throws ResourceNotFoundException {
+        service.deleteSupplier(id);
+        return "all-suppliers";
     }
 }
