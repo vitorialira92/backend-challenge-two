@@ -1,26 +1,31 @@
 $(document).ready(function() {
-    $('#zipCode').mask('00.000-000', {reverse: true});
-
-    setDocumentMask($('#type').val());
 
     $('#type').change(function() {
-        setDocumentMask($(this).val());
-    });
-
-    function setDocumentMask(type) {
-        var mask;
+        var fieldMask;
         var placeholder;
         var labelText;
+        var type = $(this).val();
+
         if(type === 'INDIVIDUAL'){
-            mask = '000.000.000-00';
+            $('#documentNumber').prop('disabled', false);
+            $('#documentNumber').prop('required', true);
+            fieldMask = '000.000.000-00';
             placeholder = 'ex: 000.000.000-00';
             labelText = 'CPF';
-        }else{
-            mask = '00.000.000/0000-00';
+            $('#documentNumber').mask(fieldMask)
+        }else if(type === 'LEGAL_ENTITY'){
+            $('#documentNumber').prop('disabled', false);
+            $('#documentNumber').prop('required', true);
+            fieldMask = '00.000.000/0000-00';
             placeholder = 'ex: 00.000.000/0000-00';
             labelText = 'CNPJ';
+            $('#documentNumber').mask(fieldMask)
+        }else{
+            $('#documentNumber').prop('disabled', true);
+            $('#documentNumber').prop('required', false);
+            $('#documentNumber').unmask
         }
         $('#document-label').text(labelText);
-        $('#documentNumber').mask(mask, {reverse: true}).attr('placeholder', placeholder);
-    }
+        $('#documentNumber').attr('placeholder', placeholder);
+    });
 });
