@@ -17,7 +17,7 @@ $(document).ready(function() {
                             <p class="card-title">${supp.name}</p>
                             <div class="icons">
                                 <img src="/images/eye.png" class = "item" title="Visualizar" alt="Visualizar" onclick="loadPage('/view-supplier/${supp.id}')">
-                                <img src="/images/edit.png" class = "item" title="Editar" alt="Editar" onclick="location.href='/edit-supplier/${supp.id}'">
+                                <img src="/images/edit.png" class = "item" title="Editar" alt="Editar" onclick="loadPage('/edit-supplier/${supp.id}')">
                                 <img src="/images/delete.png" class = "item" title="Apagar" alt="Apagar" onclick="deleteSupplier('${encodeURIComponent(supp.id)}')">    
                             </div>    
                         </div>
