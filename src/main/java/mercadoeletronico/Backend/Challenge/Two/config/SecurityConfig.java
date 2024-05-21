@@ -24,13 +24,13 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/styles/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                        .requestMatchers("/auth/login", "/logout", "/auth/register", "/register").permitAll()
+                        .requestMatchers("/auth/login", "/logout", "/auth/register", "/register", "/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/auth/login")
+                        .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true)
                 )
                 .build();
