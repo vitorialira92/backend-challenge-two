@@ -32,17 +32,6 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
-    @GetMapping("/login")
-    public String showLoginForm(Model model) {
-        model.addAttribute("loginDTO", new LoginDTO());
-        return "login";
-    }
-    @GetMapping("/register")
-    public String showRegisterForm(Model model) {
-        model.addAttribute("registerDTO", new RegisterUserDTO());
-        return "register";
-    }
-
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
         Authentication authentication = authenticationManager.authenticate(

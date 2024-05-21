@@ -17,6 +17,17 @@ public class PagesController {
     @Autowired
     private SupplierService supplierService;
 
+
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        return "register";
+    }
+
     @GetMapping("/home-page")
     public String homePage() {
         return "home-page";
@@ -51,10 +62,5 @@ public class PagesController {
     @GetMapping("/all-suppliers")
     public String viewAllSuppliers() {
         return "all-suppliers";
-    }
-
-    @GetMapping("/register")
-    public String register() {
-        return "register";
     }
 }

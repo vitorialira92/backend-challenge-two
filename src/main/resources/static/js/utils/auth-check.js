@@ -8,7 +8,7 @@ $(document).ready(function() {
             confirmButtonText: 'OK'
         }).then((result)=>{
             if (result.value) {
-                window.location.href = '/auth/login';
+                window.location.href = '/login';
             }
         });
     }
