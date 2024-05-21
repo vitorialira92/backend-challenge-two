@@ -13,14 +13,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorMessage> handleResourceNotFoundException(ResourceNotFoundException ex) {
         ErrorMessage errorMessage = new ErrorMessage(404, "Attempt to access a/an " + ex.getResourceName()
             + " that does not exist.");
-        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DuplicateCreationAttemptException.class)
     public ResponseEntity<ErrorMessage> handleDuplicateCreationAttemptException(DuplicateCreationAttemptException ex) {
-        ErrorMessage errorMessage = new ErrorMessage(404, "Attempt to create a "
+        ErrorMessage errorMessage = new ErrorMessage(409, "Attempt to create a "
                 + ex.getResourceName() + " that conflicts with an already existing unique identifier ( " +
                 ex.getIdentifierName() + " with value = " + ex.getId());
-        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorMessage, HttpStatus.CONFLICT);
     }
 }

@@ -21,7 +21,23 @@
 p {
     font-size: 24px;
 }
-
+.password-requirements{
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+}
+.requirement {
+    color: red;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+.requirement.met {
+    color: green;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
 h2 {
     color: #0A8CCC;
 }

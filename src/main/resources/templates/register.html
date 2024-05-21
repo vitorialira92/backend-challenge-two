@@ -14,7 +14,7 @@
                 <div class="card auth-card">
                     <img th:src="@{/images/logo-me-original.png}" alt="Mercado Eletrônico" style="max-height: 15vh;margin-bottom: 80px;">
                     <h2 class="card-title text-center" style="font-weight: bold;">REGISTER</h2>
-                    <form th:action="@{/auth/register}" th:object="${registerDTO}" method="post" class="mt-4">
+                    <form class="mt-4">
                         <div class="form-group">
                             <label for="email" style="color: #656565;">E-mail</label>
                             <input type="email" class="form-control input-customized" id="email" name="email" required>
@@ -22,10 +22,17 @@
                         <div class="form-group">
                             <label for="password" style="color: #656565;">Senha</label>
                             <input type="password" class="form-control input-customized" id="password" name="password" required>
+                            <div class="password-requirements">
+                                <p id="length" class="requirement">Pelo menos 8 caracteres</p>
+                                <p id="number" class="requirement">Deve conter um número</p>
+                                <p id="uppercase" class="requirement">Deve conter uma letra maiúscula</p>
+                                <p id="lowercase" class="requirement">Deve conter uma letra minúscula</p>
+                                <p id="specialChar" class="requirement">Deve conter um caractere especial (@, #, $, etc.)</p>
+                            </div>
                         </div>
                         <button id="registerButton" type="submit" class="btn btn-primary btn-block primary-button">CADASTRAR-SE</button>
                         <br>
-                        <button type="button" onclick="window.location.href='/login';" class="btn btn-secondary btn-block secondary-button">LOGIN</button>
+                        <button type="button" onclick="window.location.href='/auth/login';" class="btn btn-secondary btn-block secondary-button">LOGIN</button>
                     </form>
                 </div>
             </div>
