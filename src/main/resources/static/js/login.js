@@ -4,6 +4,26 @@ $(document).ready(function() {
         var email = $('#email').val();
         var password = $('#password').val();
 
+        if(email === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'E-mail obrigatório',
+                text: 'Por favor, insira um endereço de e-mail.',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        if(password === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Senha obrigatória',
+                text: 'Por favor, insira uma senha.',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
         $.ajax({
             url: '/auth/login',
             type: 'POST',
