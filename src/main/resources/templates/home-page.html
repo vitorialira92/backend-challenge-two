@@ -33,6 +33,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:src="@{/js/utils/loadPage.js}"></script>
+<script th:src="@{/js/utils/logout.js}"></script>
 <script th:src="@{/js/utils/auth-check.js}"></script>
 
 <script>
@@ -40,7 +41,7 @@
         loadPage('/create-supplier');
     });
     document.getElementById('logoutButton').addEventListener('click', function() {
-        window.location.href = '/logout';
+        logout();
     });
     document.getElementById('allSuppliersButton').addEventListener('click', function() {
         loadPage('/all-suppliers');
