@@ -3,6 +3,8 @@ package mercadoeletronico.Backend.Challenge.Two.domain.supplier;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 @Document(collection = "suppliers_contact")
 public class SupplierMainContact {
     @Id
@@ -46,5 +48,20 @@ public class SupplierMainContact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SupplierMainContact that = (SupplierMainContact) o;
+        return  Objects.equals(supplierId, that.supplierId) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, supplierId, name, email);
     }
 }

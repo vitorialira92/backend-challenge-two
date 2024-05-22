@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Objects;
 
 @Document(collection = "suppliers")
 public class Supplier {
@@ -93,5 +94,28 @@ public class Supplier {
 
     public void setActivitiesDescription(String activitiesDescription) {
         this.activitiesDescription = activitiesDescription;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Supplier supplier = (Supplier) o;
+        return Objects.equals(id, supplier.id) &&
+                Objects.equals(userId, supplier.userId) &&
+                Objects.equals(name, supplier.name) &&
+                Objects.equals(type, supplier.type) &&
+                Objects.equals(documentType, supplier.documentType) &&
+                Objects.equals(document, supplier.document) &&
+                mainContact.equals(supplier.mainContact) &&
+                address.equals(supplier.address) &&
+                phoneNumbers.containsAll(supplier.phoneNumbers) &&
+                supplier.phoneNumbers.containsAll(phoneNumbers) &&
+                Objects.equals(activitiesDescription, supplier.activitiesDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, name, type, document, mainContact, address, phoneNumbers, activitiesDescription);
     }
 }

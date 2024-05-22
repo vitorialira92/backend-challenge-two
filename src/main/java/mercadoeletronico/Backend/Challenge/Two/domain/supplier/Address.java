@@ -3,6 +3,8 @@ package mercadoeletronico.Backend.Challenge.Two.domain.supplier;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 @Document(collection = "supplier_address")
 public class Address {
     @Id
@@ -64,5 +66,24 @@ public class Address {
 
     public State getState() {
         return state;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return  Objects.equals(zipcode, address.zipcode) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(number, address.number) &&
+                Objects.equals(complement, address.complement) &&
+                Objects.equals(neighborhood, address.neighborhood) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(state, address.state);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, zipcode, street, number, complement, neighborhood, city, state);
     }
 }
