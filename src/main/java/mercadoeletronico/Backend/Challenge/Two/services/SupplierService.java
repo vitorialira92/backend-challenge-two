@@ -52,7 +52,7 @@ public class SupplierService {
 
     public Supplier createSupplier(SupplierCreationDTO supplierDTO, String userId) throws DuplicateCreationAttemptException{
 
-        Optional<Supplier> opt = repository.findByDocument(supplierDTO.document);
+        Optional<Supplier> opt = repository.findByUserIdAndDocument(userId, supplierDTO.document);
         if(opt.isPresent())
                 throw new DuplicateCreationAttemptException(opt.get().getDocument(),
                         opt.get().getDocumentType().name(), "supplier");
@@ -105,6 +105,7 @@ public class SupplierService {
         }
         throw new ResourceNotFoundException("Supplier");
     }
+
     public void deleteSupplier(String id) throws ResourceNotFoundException {
         Optional<Supplier> optionalSupplier = repository.findById(id);
 
