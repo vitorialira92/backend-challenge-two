@@ -1,6 +1,5 @@
 package mercadoeletronico.Backend.Challenge.Two.controllers;
 
-import jakarta.validation.Valid;
 import mercadoeletronico.Backend.Challenge.Two.domain.user.UserModel;
 import mercadoeletronico.Backend.Challenge.Two.dtos.LoginResponseDTO;
 import mercadoeletronico.Backend.Challenge.Two.services.AuthorizationService;

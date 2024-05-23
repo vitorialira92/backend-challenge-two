@@ -2,7 +2,6 @@ package mercadoeletronico.Backend.Challenge.Two.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.State;
-import mercadoeletronico.Backend.Challenge.Two.domain.supplier.SupplierType;
 
 import java.util.List;
 

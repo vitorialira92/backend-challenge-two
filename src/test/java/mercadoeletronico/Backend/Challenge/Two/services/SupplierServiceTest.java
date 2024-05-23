@@ -26,7 +26,6 @@ import java.util.stream.Stream;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @ExtendWith(MockitoExtension.class)
 public class SupplierServiceTest {
     @Mock
@@ -79,18 +78,14 @@ public class SupplierServiceTest {
     }
 
     @Test
-    public void getByIdShouldReturnSupplierWhenSupplierExists() throws ResourceNotFoundException {
+    public void getByIdShouldReturnSupplierWhenSupplierExists() {
         Supplier expectedSupplier = SupplierServiceTestData.getStandardSupplier();
 
         when(supplierRepository.findById("124535fdvas2"))
                 .thenReturn(Optional.of(expectedSupplier));
 
         assertDoesNotThrow(() -> {
-            Optional<SupplierDTO> result = supplierService.getById("124535fdvas2");
-
-            assertTrue(result.isPresent(), "Supplier should be found");
-
-            SupplierDTO supplierDTO = result.get();
+            SupplierDTO supplierDTO = supplierService.getById("124535fdvas2");
 
             assertEquals(expectedSupplier.getName(), supplierDTO.name, "Names should match");
             assertEquals(expectedSupplier.getType(), supplierDTO.type, "Types should match");
@@ -116,8 +111,7 @@ public class SupplierServiceTest {
     }
 
     @Test
-    public void createSupplierShouldThrowExceptionWhenAttemptToCreateSupplierWithTheSameDocument()
-            throws DuplicateCreationAttemptException {
+    public void createSupplierShouldThrowExceptionWhenAttemptToCreateSupplierWithTheSameDocument() {
         when(supplierRepository.findByUserIdAndDocument("123abc", "47.960.950/0001-21"))
                 .thenReturn(Optional.of(SupplierServiceTestData.getStandardSupplier()));
 
@@ -168,11 +162,7 @@ public class SupplierServiceTest {
 
         when(supplierRepository.save(any(Supplier.class))).thenReturn(supplier);
 
-        Optional<Supplier> updatedSupplierOpt = supplierService.updateSupplier("124535fdvas2", supplierUpdateDTO);
-
-        assertTrue(updatedSupplierOpt.isPresent(), "Supplier should be returned");
-        Supplier updatedSupplier = updatedSupplierOpt.get();
-
+        Supplier updatedSupplier = supplierService.updateSupplier("124535fdvas2", supplierUpdateDTO);
 
         assertEquals(supplierUpdateDTO.activitiesDescription, updatedSupplier.getActivitiesDescription(), "Activities description should match");
         assertEquals(supplierUpdateDTO.contactName, updatedSupplier.getMainContact().getName(), "Main contact's name should match");
@@ -215,7 +205,6 @@ public class SupplierServiceTest {
     }
 
     private static Stream<SupplierForUserId> getSupplierListForUser(){
-
         List<SupplierForUserId> suppliers = new ArrayList<>();
         String userId = "u00";
         for(int i = 0; i < 8; i++){

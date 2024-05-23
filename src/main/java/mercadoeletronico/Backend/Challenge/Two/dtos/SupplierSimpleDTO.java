@@ -1,7 +1,5 @@
 package mercadoeletronico.Backend.Challenge.Two.dtos;
 
-import java.util.List;
-
 public class SupplierSimpleDTO {
     public String id;
     public String name;

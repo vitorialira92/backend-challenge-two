@@ -33,17 +33,17 @@ public class SupplierService {
         return suppliers;
     }
 
-    public Optional<SupplierDTO> getById(String id) throws ResourceNotFoundException {
+    public SupplierDTO getById(String id) throws ResourceNotFoundException {
 
         Optional<Supplier> optionalSupplier = repository.findById(id);
         if(optionalSupplier.isPresent()){
             var supplier = optionalSupplier.get();
 
-            return Optional.of(new SupplierDTO(supplier.getName(), supplier.getType(), supplier.getDocument(), supplier.getMainContact().getName(),
+            return new SupplierDTO(supplier.getName(), supplier.getType(), supplier.getDocument(), supplier.getMainContact().getName(),
                     supplier.getMainContact().getEmail(), supplier.getPhoneNumbers(), supplier.getActivitiesDescription(),
                     supplier.getAddress().getZipcode(), supplier.getAddress().getStreet(), supplier.getAddress().getNumber(),
                     supplier.getAddress().getComplement(), supplier.getAddress().getNeighborhood(),
-                    supplier.getAddress().getCity(), supplier.getAddress().getState()));
+                    supplier.getAddress().getCity(), supplier.getAddress().getState());
         }
 
 
@@ -79,7 +79,7 @@ public class SupplierService {
         return supplier;
     }
 
-    public Optional<Supplier> updateSupplier(String id, SupplierUpdateDTO supplierDTO) throws ResourceNotFoundException {
+    public Supplier updateSupplier(String id, SupplierUpdateDTO supplierDTO) throws ResourceNotFoundException {
         Optional<Supplier> optionalSupplier = repository.findById(id);
 
         if(optionalSupplier.isPresent()) {
@@ -101,7 +101,7 @@ public class SupplierService {
 
             repository.save(supplier);
 
-            return Optional.of(supplier);
+            return supplier;
         }
         throw new ResourceNotFoundException("Supplier");
     }
