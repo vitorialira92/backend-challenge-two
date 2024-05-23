@@ -1,4 +1,8 @@
-$(document).ready(function() {
+$(document).on('authenticationChecked', function(event, isAuthenticated) {
+    if (!isAuthenticated) {
+        return;
+    }
+
     var supplierId = $('#supplierIdContainer').text();
     const token = localStorage.getItem('authToken');
     $.ajax({
