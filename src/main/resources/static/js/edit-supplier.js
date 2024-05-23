@@ -1,4 +1,8 @@
-$(document).ready(function() {
+$(document).on('authenticationChecked', function(event, isAuthenticated) {
+    if (!isAuthenticated) {
+        return;
+    }
+
     var supplierId = $('#supplierIdContainer').text();
     const token = localStorage.getItem('authToken');
 
@@ -51,7 +55,7 @@ $(document).ready(function() {
         error: function() {
             Swal.fire({
                 title: 'Erro!',
-                text: 'Fornecedor não encontrado!.',
+                text: 'Fornecedor não encontrado!',
                 icon: 'error',
                 confirmButtonText: 'OK'
             }).then((result)=>{

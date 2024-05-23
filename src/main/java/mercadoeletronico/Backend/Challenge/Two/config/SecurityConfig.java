@@ -24,8 +24,9 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/styles/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                        .requestMatchers("/", "/index.html").permitAll()
-                        .requestMatchers("/auth/login", "/logout", "/auth/register", "/register", "/login").permitAll()
+                        .requestMatchers("/", "/register", "/login", "/home-page",
+                                "/create-supplier", "/edit-supplier/**", "/all-suppliers", "/view-supplier/**").permitAll() //html pages
+                        .requestMatchers("/auth/login", "/logout", "/auth/register").permitAll() //authentication
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
