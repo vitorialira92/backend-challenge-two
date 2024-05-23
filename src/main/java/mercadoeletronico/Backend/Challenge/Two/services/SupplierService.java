@@ -109,8 +109,9 @@ public class SupplierService {
     public void deleteSupplier(String id) throws ResourceNotFoundException {
         Optional<Supplier> optionalSupplier = repository.findById(id);
 
-        optionalSupplier.ifPresent(supplier -> repository.delete(supplier));
-
-        throw new ResourceNotFoundException("Supplier");
+        if(optionalSupplier.isPresent())
+            repository.delete(optionalSupplier.get());
+        else
+            throw new ResourceNotFoundException("Supplier");
     }
 }
