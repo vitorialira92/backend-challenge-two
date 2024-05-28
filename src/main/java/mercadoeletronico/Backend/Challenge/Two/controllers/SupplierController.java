@@ -1,6 +1,7 @@
 package mercadoeletronico.Backend.Challenge.Two.controllers;
 
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.Supplier;
 import mercadoeletronico.Backend.Challenge.Two.dtos.*;
 import mercadoeletronico.Backend.Challenge.Two.exceptions.DuplicateCreationAttemptException;
@@ -41,7 +42,7 @@ public class SupplierController {
     }
     @PostMapping("/{userId}")
     public ResponseEntity<String> createSupplier(@Parameter(description = "Supplier Id", example = "4848644589")
-                                     @PathVariable String userId, @RequestBody SupplierCreationDTO supplierDTO){
+                                     @PathVariable String userId, @Valid @RequestBody SupplierCreationDTO supplierDTO){
         try{
             Supplier supplier = service.createSupplier(supplierDTO, userId);
             return ResponseEntity.ok(supplier.getId());

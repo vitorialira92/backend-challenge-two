@@ -3,6 +3,7 @@ package mercadoeletronico.Backend.Challenge.Two.dtos;
 import jakarta.validation.constraints.NotNull;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.State;
 import mercadoeletronico.Backend.Challenge.Two.domain.supplier.SupplierType;
+import mercadoeletronico.Backend.Challenge.Two.validator.ValidDocument;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class SupplierCreationDTO {
     @NotNull
     public SupplierType type;
     @NotNull
+    @ValidDocument
     public String document;
     @NotNull
     public String contactName;
