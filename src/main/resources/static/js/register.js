@@ -63,7 +63,7 @@ $(document).ready(function() {
                     text: 'Sua conta foi criada com sucesso, agora faça login.',
                     confirmButtonText: 'OK'
                 }).then((result)=>{
-                    window.location.href="/auth/login";
+                    window.location.href="/login";
                 });
             },
             error: function(xhr) {
