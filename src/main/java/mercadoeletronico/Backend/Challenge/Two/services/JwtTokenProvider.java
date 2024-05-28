@@ -17,11 +17,11 @@ import java.time.ZoneOffset;
 @Service
 public class JwtTokenProvider {
 
-    @Value("${security:token:secret}")
+    @Value("${security.token.secret}")
     private String secret;
 
-    //@Value("${security:token:expirationInMilliSeconds}")
-    private long expirationInHours = 240;
+    @Value("${security.token.expirationInHours}")
+    private long expirationInHours;
 
     public String generateToken(UserModel user){
         try{
