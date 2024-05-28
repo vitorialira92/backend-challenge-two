@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller()
 @RequestMapping("/supplier")
@@ -62,9 +61,10 @@ public class SupplierController {
         }
     }
     @DeleteMapping("/{id}")
-    public void deleteSupplier(@PathVariable String id) {
+    public String deleteSupplier(@PathVariable String id) {
         try{
             service.deleteSupplier(id);
+            return "all-suppliers";
         }catch(ResourceNotFoundException ex){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
         }
