@@ -1,8 +1,5 @@
 package mercadoeletronico.Backend.Challenge.Two.controllers;
 
-import mercadoeletronico.Backend.Challenge.Two.exceptions.ResourceNotFoundException;
-import mercadoeletronico.Backend.Challenge.Two.services.SupplierService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PagesController {
-    @Autowired
-    private SupplierService supplierService;
-
 
     @GetMapping("/login")
-    public String showLoginForm(Model model) {
+    public String showLoginForm() {
         return "login";
     }
 
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
+    public String showRegisterForm() {
         return "register";
     }
 
@@ -35,13 +29,13 @@ public class PagesController {
     }
 
     @GetMapping("/edit-supplier/{id}")
-    public String editSupplier(@PathVariable String id, Model model) throws ResourceNotFoundException {
+    public String editSupplier(@PathVariable String id, Model model) {
         model.addAttribute("supplierId", id);
         return "edit-supplier";
     }
 
     @GetMapping("/view-supplier/{id}")
-    public String viewSupplier(@PathVariable String id, Model model) throws ResourceNotFoundException {
+    public String viewSupplier(@PathVariable String id, Model model) {
         model.addAttribute("supplierId", id);
         return "view-supplier";
     }
