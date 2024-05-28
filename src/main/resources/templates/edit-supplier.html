@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:src="@{/js/edit-supplier.js}"></script>
     <script th:src="@{/js/utils/auth-check.js}"></script>
     <script th:src="@{/js/utils/loadPage.js}"></script>
     <script th:src="@{/js/utils/logout.js}"></script>
@@ -36,11 +37,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label for="type">Tipo de fornecedor</label>
-                    <select class="form-control custom-input" id="type" disabled>
-                        <option value="" selected disabled >Selecione uma opção</option>
-                        <option th:value="INDIVIDUAL">Pessoa Física</option>
-                        <option th:value="LEGAL_ENTITY">Pessoa Jurídica</option>
-                    </select>
+                    <input type="text" class="form-control custom-input" id="type" readonly>
                 </div>
             </div>
             <div class="form-row">
@@ -112,7 +109,6 @@
             </div>
         </form>
     </div>
-    <script th:src="@{/js/edit-supplier.js}"></script>
     <script>
         $(document).ready(function(){
             $('#zipCode').click(function (){
