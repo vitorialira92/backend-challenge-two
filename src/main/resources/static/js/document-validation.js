@@ -52,7 +52,7 @@ function validateCPF(cpf){
         sum += parseInt(cpf.substring(i-1, i)) * (11 - i);
     firstDigit = 11 - (sum % 11);
 
-    if (firstDigit === 10)
+    if (firstDigit === 10 || firstDigit === 11)
         firstDigit = 0;
     if (firstDigit !== parseInt(cpf.substring(9, 10)))
         return false;
@@ -63,7 +63,7 @@ function validateCPF(cpf){
         sum += parseInt(cpf.substring(i-1, i)) * (12 - i);
     secondDigit = 11 - sum % 11;
 
-    if (secondDigit === 10)
+    if (secondDigit === 10 || secondDigit === 11)
         secondDigit = 0;
 
     if (secondDigit !== parseInt(cpf.substring(10, 11)))
